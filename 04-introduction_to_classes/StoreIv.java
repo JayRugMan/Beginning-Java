@@ -1,11 +1,11 @@
-public class Store {
+public class StoreIv {
   // instance fields
   String productType;
   int inventoryCount;
   double inventoryPrice;
   
   // constructor method
-  public Store(String product, int count, double price) {
+  public StoreIv(String product, int count, double price) {
     productType = product;
     inventoryCount = count;
     inventoryPrice = price;
@@ -13,6 +13,7 @@ public class Store {
   
   // main method
   public static void main(String[] args) {
-    Store cookieShop = new Store("cookies", 12, 3.75);
+    StoreIv cookieShop = new StoreIv("cookies", 12, 3.75);
+    System.out.println("We sell " + cookieShop.productType + " for $" + cookieShop.inventoryPrice + "!");
   }
 }
