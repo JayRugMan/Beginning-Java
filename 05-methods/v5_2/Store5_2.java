@@ -18,8 +18,11 @@ public class Store5_2 {
   // main method
   public static void main(String[] args) {
     Store5_2 lemonadeStand = new Store5_2("Lemonade", 3.75);
-    System.out.println(lemonadeStand.price);
+    Store5_2 hotdogStand = new Store5_2("Hotdog", 1.50);
+    System.out.println("The price of " + lemonadeStand.productType + " is $" + lemonadeStand.price);
+    System.out.println("The price of a " + hotdogStand.productType + " is $" + hotdogStand.price);
     lemonadeStand.increasePrice(1.5);
-    System.out.println(lemonadeStand.price);
+    System.out.println("The price of " + lemonadeStand.productType + " is now $" + lemonadeStand.price);
+    System.out.println("The price of " + hotdogStand.productType + " is still $" + hotdogStand.price);
   }
 }
