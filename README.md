@@ -6,6 +6,15 @@ A repository of my Journey to learn Java
 
 ## Vocabulary
 
+> _static method_
+>
+> A _static method_ is a method that does not require a prior assignment before using, like `Math.pow()`. 
+> `int xp = Math.pow(2, 4)` > `System.out.println(xp)` > `16`
+
+> _non-static method_
+>
+> A _non-static method_ is a method that requires a prior assignment before using. 
+
 > _assortment_ `ArrayList`: 
 >
 > An _assortment_ is an `ArrayList` that can store different values because we do not specify its type during initialization. The items stored in this `ArrayList` will be considered "Objects". **As a result, they won’t have access to some of their methods without doing some fancy casting**. Although this type of `ArrayList` is allowed, using an `ArrayList` that specifies its type is preferred.
