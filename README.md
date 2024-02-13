@@ -13,7 +13,7 @@ A repository of my Journey to learn Java
 > `int xp = Math.pow(2, 4)` > `System.out.println(xp)` > `16`
 ___
 > **static variable**  
-> Variables that belong to the class itself. They can be accessed by `Class.variable`. They are declared as follows:  
+> Variables that belong to the class itself. They can be accessed by `Class.variable`. Also note that they are shared by all instances of a class. They are declared as follows:  
 > `public static Sting name = "Jason";`
 ___
 > **non-static method**  
@@ -26,4 +26,8 @@ ___
 > **generics**  
 > We use angle brackets `<` and `>` to declare the type of the `ArrayList`. These symbols are used for _generics_. _Generics_ are a Java construct that allows us to define classes and objects as parameters of an `ArrayList`. For this reason, we can’t use primitive types in an `ArrayList`. IE `<Integer>`, `<String>`, `<Car>`, etc...  
 > 9.2 - ARRAYLISTS, Creating ArrayLists
+___
+> **final**  
+> When something is _final_, it cannot be changed once set. Attepts to change it will throw an error.  
+> `final int x = 5;`
 ___
