@@ -31,3 +31,11 @@ ___
 > When something is _final_, it cannot be changed once set. Attepts to change it will throw an error.  
 > `final int x = 5;`
 ___
+> **parent class - superclass - base class**  
+> Refers to the class from which another class inherits.  
+> `Shape`
+___
+> **child class - subclass - derived class**  
+> Refers to the class that inherits from another class.  
+> `Triangle`
+___
