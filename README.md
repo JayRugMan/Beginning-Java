@@ -32,10 +32,10 @@ ___
 > `final int x = 5;`
 ___
 > **parent class - superclass - base class**  
-> Refers to the class from which another class inherits.  
+> Refers to the class from which another class inherits. [Cheatsheet](https://www.codecademy.com/learn/learn-java/modules/learn-java-inheritance-and-polymorphism/cheatsheet)  
 > `Shape`
 ___
 > **child class - subclass - derived class**  
-> Refers to the class that inherits from another class.  
+> Refers to the class that inherits from another class. [Cheatsheet](https://www.codecademy.com/learn/learn-java/modules/learn-java-inheritance-and-polymorphism/cheatsheet)  
 > `Triangle`
 ___
