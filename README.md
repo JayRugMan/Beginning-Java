@@ -27,8 +27,12 @@ ___
 > We use angle brackets `<` and `>` to declare the type of the `ArrayList`. These symbols are used for _generics_. _Generics_ are a Java construct that allows us to define classes and objects as parameters of an `ArrayList`. For this reason, we can’t use primitive types in an `ArrayList`. IE `<Integer>`, `<String>`, `<Car>`, etc...  
 > 9.2 - ARRAYLISTS, Creating ArrayLists
 ___
+> **protected**  
+> The `protected` keyword is an access modifier used for attributes, methods and constructors, making them accessible in the same package and subclasses.  
+> IE (from _**13-Inheritance_Polymorphism/12.7/Noodle.java**_): `protected double lengthInCentimeters;`
+___
 > **final**  
-> When something is _final_, it cannot be changed once set. Attepts to change it will throw an error.  
+> When something is _final_, it cannot be changed once set. Attepts to change it will throw an error - it is immutable.  
 > `final int x = 5;`
 ___
 > **parent class - superclass - base class**  
@@ -38,8 +42,4 @@ ___
 > **child class - subclass - derived class**  
 > Refers to the class that inherits from another class. [Cheatsheet](https://www.codecademy.com/learn/learn-java/modules/learn-java-inheritance-and-polymorphism/cheatsheet)  
 > `Triangle`
-___
-> **protected**  
-> The `protected` keyword is an access modifier used for attributes, methods and constructors, making them accessible in the same package and subclasses.  
-> IE (from _**13-Inheritance_Polymorphism/12.7/Noodle.java**_): `protected double lengthInCentimeters;`
 ___
