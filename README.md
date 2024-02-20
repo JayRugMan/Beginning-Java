@@ -39,3 +39,7 @@ ___
 > Refers to the class that inherits from another class. [Cheatsheet](https://www.codecademy.com/learn/learn-java/modules/learn-java-inheritance-and-polymorphism/cheatsheet)  
 > `Triangle`
 ___
+> **protected**  
+> The `protected` keyword is an access modifier used for attributes, methods and constructors, making them accessible in the same package and subclasses.  
+> IE (from _**13-Inheritance_Polymorphism/12.7/Noodle.java**_): `protected double lengthInCentimeters;`
+___
