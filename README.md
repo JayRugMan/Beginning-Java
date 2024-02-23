@@ -43,3 +43,12 @@ ___
 > Refers to the class that inherits from another class. [Cheatsheet](https://www.codecademy.com/learn/learn-java/modules/learn-java-inheritance-and-polymorphism/cheatsheet)  
 > `Triangle`
 ___
+> **Exceptions**  
+> Java uses `exceptions` to handle errors and other exceptional events. Exceptions are the conditions that occur at runtime and may cause the termination of the program.  
+>  
+> Some Common Exceptions:  
+> `ArithmeticException`: Occurs when an arithmetic operation yields an error. Something went wrong during an arithmetic operation; for example, division by zero. [see more](https://www.codecademy.com/resources/docs/java/errors/arithmeticexception)  
+> `NullPointerException`: Occurs when attempting to use a null value in place of where an object is required. You tried to access an instance variable or invoke a method on an object that is currently 'null'. [see more](https://www.codecademy.com/resources/docs/java/errors/nullpointerexception)  
+> `ArrayIndexOutOfBoundsException`: Occurs when attempting to access an index that does not exist within a given array. The index you are using is either negative or greater than the last index of the array (i.e., `array.length-1`). [see more](https://www.codecademy.com/resources/docs/java/errors/arrayindexoutofboundsexception)  
+> `FileNotFoundException`: Occurs when a file with the specified path cannot be found. Java didn’t find the file it was looking for. [see more](https://www.codecademy.com/resources/docs/java/errors/filenotfoundexception)  
+___
