@@ -9,14 +9,25 @@ public class ImageProcessing {
 	public static void main(String[] args) {
     //JH String baseDir = "/home/jasonhardman/Documents/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
     String baseDir = "/home/jason/Documents/CodingProjects/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
-	// The provided images are apple.jpg, flower.jpg, and kitten.jpg
+	  // The provided images are apple.jpg, flower.jpg, and kitten.jpg
 		int[][] imageData = imgToTwoD(baseDir + "/apple.jpg");
     // Or load your own image using a URL!
 		//int[][] imageData = imgToTwoD("https://content.codecademy.com/projects/project_thumbnails/phaser/bug-dodger.png");
 		//viewImageData(imageData);
-		int[][] trimmed = trimBorders(imageData, 60);
+
+    int[][] trimmed = trimBorders(imageData, 60);
 		twoDToImage(trimmed, baseDir + "/trimmed_apple.jpg");
-		// int[][] allFilters = stretchHorizontally(shrinkVertically(colorFilter(negativeColor(trimBorders(invertImage(imageData), 50)), 200, 20, 40)));
+
+    int[][] negative = negativeColor(imageData);
+    twoDToImage(negative, baseDir + "/negative_apple.jpg");
+
+    int[][] hStretched = stretchHorizontally(imageData);
+    twoDToImage(hStretched, baseDir + "/h_stretched_apple.jpg");
+
+    int[][] vShrunk = stretchHorizontally(imageData);
+    twoDToImage(vShrunk, baseDir + "/v_shrunk_apple.jpg");
+
+    // int[][] allFilters = stretchHorizontally(shrinkVertically(colorFilter(negativeColor(trimBorders(invertImage(imageData), 50)), 200, 20, 40)));
 		// Painting with pixels
 	}
 	// Image Processing Methods
@@ -36,16 +47,41 @@ public class ImageProcessing {
 		}
 	}
 	public static int[][] negativeColor(int[][] imageTwoD) {
-		// TODO: Fill in the code for this method
-		return null;
+		// Creates a negative image by subtracting RGB values from original image from 255 for negative image
+    int[][] negativeImage = new int[imageTwoD.length][imageTwoD[0].length];
+    for(int i =0; i < imageTwoD.length; i++) {
+      for(int j=0; j < imageTwoD[i].length; j++) {
+        int[] rgba = getRGBAFromPixel(imageTwoD[i][j]);
+        rgba[0] = 255 - rgba[0];
+        rgba[1] = 255 - rgba[1];
+        rgba[2] = 255 - rgba[2];
+        negativeImage[i][j] = getColorIntValFromRGBA(rgba);
+      }
+    }
+		return negativeImage;
 	}
 	public static int[][] stretchHorizontally(int[][] imageTwoD) {
-		// TODO: Fill in the code for this method
-		return null;
+		// Stretches the image horizontally by doubling row-length and duplicating each pixel along that plane
+    int[][] stretchedImg = new int[imageTwoD.length][imageTwoD[0].length * 2];
+    int doubleTrack = 0;
+    for(int i=0; i < imageTwoD.length; i++) {
+      for(int j=0; j < imageTwoD[0].length; j++) {
+        doubleTrack = j*2;
+        stretchedImg[i][doubleTrack] = imageTwoD[i][j];
+        stretchedImg[i][doubleTrack+1] = imageTwoD[i][j];
+      }
+    }
+		return stretchedImg;
 	}
 	public static int[][] shrinkVertically(int[][] imageTwoD) {
-		// TODO: Fill in the code for this method
-		return null;
+		// Shrinks image by only transfering every other row of the original image
+    int[][] shrunkImage = new int[imageTwoD.length/2][imageTwoD[0].length];
+    for(int i = 0; i < imageTwoD[0].length; i++) {
+      for(int j = 0; j < imageTwoD.length-1; j += 2) {
+        shrunkImage[j/2][i] = imageTwoD[j][i];
+      }
+    }
+		return shrunkImage;
 	}
 	public static int[][] invertImage(int[][] imageTwoD) {
 		// TODO: Fill in the code for this method
