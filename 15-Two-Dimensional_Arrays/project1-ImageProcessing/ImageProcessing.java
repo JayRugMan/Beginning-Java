@@ -8,7 +8,8 @@ import javax.imageio.ImageIO;
 public class ImageProcessing {
 	public static void main(String[] args) {
     //JH String baseDir = "/home/jasonhardman/Documents/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
-    String baseDir = "/home/jason/Documents/CodingProjects/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
+    //JH String baseDir = "/home/jason/Documents/CodingProjects/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
+    String baseDir = ".";
 	  // The provided images are apple.jpg, flower.jpg, and kitten.jpg
 		int[][] imageData = imgToTwoD(baseDir + "/apple.jpg");
     // Or load your own image using a URL!
@@ -24,8 +25,11 @@ public class ImageProcessing {
     int[][] hStretched = stretchHorizontally(imageData);
     twoDToImage(hStretched, baseDir + "/h_stretched_apple.jpg");
 
-    int[][] vShrunk = stretchHorizontally(imageData);
+    int[][] vShrunk = shrinkVertically(imageData);
     twoDToImage(vShrunk, baseDir + "/v_shrunk_apple.jpg");
+
+    int[][] inverted = invertImage(imageData);
+    twoDToImage(inverted, baseDir + "/inverted_apple.jpg");
 
     // int[][] allFilters = stretchHorizontally(shrinkVertically(colorFilter(negativeColor(trimBorders(invertImage(imageData), 50)), 200, 20, 40)));
 		// Painting with pixels
@@ -76,16 +80,22 @@ public class ImageProcessing {
 	public static int[][] shrinkVertically(int[][] imageTwoD) {
 		// Shrinks image by only transfering every other row of the original image
     int[][] shrunkImage = new int[imageTwoD.length/2][imageTwoD[0].length];
-    for(int i = 0; i < imageTwoD[0].length; i++) {
-      for(int j = 0; j < imageTwoD.length-1; j += 2) {
+    for(int i = 0; i < imageTwoD[0].length; i++) {  // iterate through each column, or element of the rows
+      for(int j = 0; j < imageTwoD.length-1; j += 2) {  // iterate through every other row
         shrunkImage[j/2][i] = imageTwoD[j][i];
       }
     }
 		return shrunkImage;
 	}
 	public static int[][] invertImage(int[][] imageTwoD) {
-		// TODO: Fill in the code for this method
-		return null;
+		// Invert the image
+		int[][] invertedImage = new int[imageTwoD.length][imageTwoD[0].length];
+		for(int i = 0; i < imageTwoD.length; i++) {
+			for(int j = 0; j < imageTwoD[0].length; j++) {
+				invertedImage[i][j] = imageTwoD[(imageTwoD.length-1)-i][(imageTwoD[0].length-1)-j];
+			}
+		}
+		return invertedImage;
 	}
 	public static int[][] colorFilter(int[][] imageTwoD, int redChangeValue, int greenChangeValue, int blueChangeValue) {
 		// TODO: Fill in the code for this method
