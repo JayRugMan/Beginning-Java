@@ -31,6 +31,9 @@ public class ImageProcessing {
     int[][] inverted = invertImage(imageData);
     twoDToImage(inverted, baseDir + "/inverted_apple.jpg");
 
+    int[][] filtered = colorFilter(imageData, 0, -200, 0);
+    twoDToImage(filtered, baseDir + "/filtered_apple.jpg");
+
     // int[][] allFilters = stretchHorizontally(shrinkVertically(colorFilter(negativeColor(trimBorders(invertImage(imageData), 50)), 200, 20, 40)));
 		// Painting with pixels
 	}
@@ -98,8 +101,31 @@ public class ImageProcessing {
 		return invertedImage;
 	}
 	public static int[][] colorFilter(int[][] imageTwoD, int redChangeValue, int greenChangeValue, int blueChangeValue) {
-		// TODO: Fill in the code for this method
-		return null;
+		// Add a color filter
+		int[][] filteredImage = new int[imageTwoD.length][imageTwoD[0].length];
+		for(int i = 0; i < imageTwoD.length; i++) {
+			for(int j = 0; j < imageTwoD[0].length; j++) {
+
+				// Extract color from pixels
+				int[] rgba = getRGBAFromPixel(imageTwoD[i][j]);
+				rgba[0] = rgba[0] + redChangeValue;
+				rgba[1] = rgba[1] + greenChangeValue;
+				rgba[2] = rgba[2] + blueChangeValue;
+
+				// Correct each new value to remain within range of 0 and 255
+				for(int k = 0; k < (rgba.length - 1); k++) {
+					if(rgba[k] < 0) {
+						rgba[k] = 0;
+					} else if(rgba[k] > 255) {
+						rgba[k] = 255;
+					}
+				}
+
+				// Add new pixel to final image
+				filteredImage[i][j] = getColorIntValFromRGBA(rgba);
+			}
+		}
+		return filteredImage;
 	}
 	// Painting Methods
 	public static int[][] paintRandomImage(int[][] canvas) {
