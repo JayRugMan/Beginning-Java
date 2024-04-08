@@ -7,9 +7,9 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 public class ImageProcessing {
 	public static void main(String[] args) {
-    //JH String baseDir = "/home/jasonhardman/Documents/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
+    String baseDir = "/home/jasonhardman/Documents/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
     //JH String baseDir = "/home/jason/Documents/CodingProjects/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
-    String baseDir = ".";
+    //JH String baseDir = ".";
 	  // The provided images are apple.jpg, flower.jpg, and kitten.jpg
 		int[][] imageData = imgToTwoD(baseDir + "/apple.jpg");
     // Or load your own image using a URL!
@@ -31,7 +31,7 @@ public class ImageProcessing {
     int[][] inverted = invertImage(imageData);
     twoDToImage(inverted, baseDir + "/inverted_apple.jpg");
 
-    int[][] filtered = colorFilter(imageData, 0, -200, 0);
+    int[][] filtered = colorFilter(imageData, -75, 30, -30);
     twoDToImage(filtered, baseDir + "/filtered_apple.jpg");
 
     // int[][] allFilters = stretchHorizontally(shrinkVertically(colorFilter(negativeColor(trimBorders(invertImage(imageData), 50)), 200, 20, 40)));

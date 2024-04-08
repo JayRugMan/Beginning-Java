@@ -8,9 +8,11 @@ import javax.imageio.ImageIO;
 
 public class Solution {
 	public static void main(String[] args) {
+    String baseDir = "/home/jasonhardman/Documents/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
+    //JH String baseDir = "/home/jason/Documents/CodingProjects/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
 
     // The provided images are apple.jpg, flower.jpg, and kitten.jpg
-		int[][] imageData = imgToTwoD("./apple.jpg");
+		int[][] imageData = imgToTwoD(baseDir + "/apple.jpg");
 		
     // Or load your own image using a URL!
 		//int[][] imageData = imgToTwoD("https://content.codecademy.com/projects/project_thumbnails/phaser/bug-dodger.png");
@@ -19,32 +21,32 @@ public class Solution {
 
 		int[][] trimmed = trimBorders(imageData, 60);
 
-		twoDToImage(trimmed, "./trimmed_apple.jpg");
+		twoDToImage(trimmed, baseDir + "/trimmed_apple.jpg");
 		
 
 		int[][] negative = negativeColor(imageData);
 
-		twoDToImage(negative, "./negative_apple.jpg");
+		twoDToImage(negative, baseDir + "/negative_apple.jpg");
 		
 
 		int[][] stretchedHImg = stretchHorizontally(imageData);
 
-		twoDToImage(stretchedHImg, "./stretched_apple.jpg");
+		twoDToImage(stretchedHImg, baseDir + "/stretched_apple.jpg");
 		
 
 		int[][] shrankVImg = shrinkVertically(imageData);
 
-		twoDToImage(shrankVImg, "./shrank_apple.jpg");
+		twoDToImage(shrankVImg, baseDir + "/shrank_apple.jpg");
 		
 
 		int[][] invertedImg = invertImage(imageData);
 
-		twoDToImage(invertedImg, "./inverted_apple.jpg");
+		twoDToImage(invertedImg, baseDir + "/inverted_apple.jpg");
 		
 
 		int[][] coloredImg = colorFilter(imageData, -75, 30, -30);
 
-		twoDToImage(coloredImg, "./colored_apple.jpg");
+		twoDToImage(coloredImg, baseDir + "/colored_apple.jpg");
 
 		// int[][] allFilters = stretchHorizontally(shrinkVertically(colorFilter(negativeColor(trimBorders(invertImage(imageData), 50)), 200, 20, 40)));
 
@@ -55,17 +57,17 @@ public class Solution {
 
 		int[][] randomImg = paintRandomImage(blankImg);
 
-		twoDToImage(randomImg, "./random_img.jpg");
+		twoDToImage(randomImg, baseDir + "/random_img.jpg");
 
 		int[] rgba = { 255, 255, 0, 255 };
 
 		int[][] rectangleImg = paintRectangle(randomImg, 200, 200, 100, 100, getColorIntValFromRGBA(rgba));
 
-		twoDToImage(rectangleImg, "./rectangle.jpg");
+		twoDToImage(rectangleImg, baseDir + "/rectangle.jpg");
 
 		int[][] generatedRectangles = generateRectangles(randomImg, 1000);
 
-		twoDToImage(generatedRectangles, "./generated_rect.jpg");
+		twoDToImage(generatedRectangles, baseDir + "/generated_rect.jpg");
 	}
 
 	// Image Processing Methods
