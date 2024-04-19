@@ -7,9 +7,9 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 public class ImageProcessing {
 	public static void main(String[] args) {
-    String baseDir = "/home/jasonhardman/Documents/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
+    //JH String baseDir = "/home/jasonhardman/Documents/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
     //JH String baseDir = "/home/jason/Documents/CodingProjects/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
-    //JH String baseDir = ".";
+    String baseDir = ".";
 	  // The provided images are apple.jpg, flower.jpg, and kitten.jpg
 		int[][] imageData = imgToTwoD(baseDir + "/apple.jpg");
 		int[][] blankCanvas = new int[500][500];
