@@ -37,11 +37,13 @@ public class ImageProcessing {
 
     int[][] random = paintRandomImage(blankCanvas);
     twoDToImage(random, baseDir + "/random_image.jpg");
-
-		int[] rectRGBA = {86,235,245,255};
-		int rectColor = getColorIntValFromRGBA( rectRGBA );
-    int[][]  pRect = paintRectangle(blankCanvas, 450, 50, 400, 50, rectColor);
+		
+		int[] rectRGBA = {255,154,0,255};
+    int[][]  pRect = paintRectangle(blankCanvas, 450, 50, 400, 50, getColorIntValFromRGBA( rectRGBA ));
     twoDToImage(pRect, baseDir + "/rect_image.jpg");
+
+    int[][] rectArt = generateRectangles(blankCanvas, 25);
+    twoDToImage(rectArt, baseDir + "/rect_art.jpg");
 
     // int[][] allFilters = stretchHorizontally(shrinkVertically(colorFilter(negativeColor(trimBorders(invertImage(imageData), 50)), 200, 20, 40)));
 		// Painting with pixels
@@ -155,7 +157,7 @@ public class ImageProcessing {
 	}
 	public static int[][] paintRectangle(int[][] canvas, int width, int height, int rowPosition, int colPosition, int color) {
 		// Draws a rectangle where defined by input
-		int[][] rectImage = new int[canvas.length][canvas[0].length];
+		int[][] rectImage = canvas;
 		// make sure not to go off the canvas
 		if(rowPosition >= canvas.length) {
 			rowPosition = canvas.length - 1;
@@ -177,8 +179,23 @@ public class ImageProcessing {
 		return rectImage;
 	}
 	public static int[][] generateRectangles(int[][] canvas, int numRectangles) {
-		// TODO: Fill in the code for this method
-		return null;
+		// Rect art creation
+		Random rand = new Random();
+		int[][] rectArt = new int[canvas.length][canvas[0].length];
+		for(int rect=0 ; rect < numRectangles ; rect++ ) {
+			int randHeight = rand.nextInt(canvas.length);
+			int randWidth = rand.nextInt(canvas[0].length);
+			int randRowPos = rand.nextInt(canvas.length - randHeight);
+			int randColPos = rand.nextInt(canvas[0].length - randWidth);
+			int[] randRgba = new int[4];
+			randRgba[0] = rand.nextInt(255);
+			randRgba[1] = rand.nextInt(255);
+			randRgba[2] = rand.nextInt(255);
+			randRgba[3] = 255;
+			int randColor = getColorIntValFromRGBA(randRgba);
+			rectArt = paintRectangle(rectArt, randWidth, randHeight, randRowPos, randColPos, randColor);
+		}
+		return rectArt;
 	}
 	// Utility Methods
 	public static int[][] imgToTwoD(String inputFileOrLink) {
