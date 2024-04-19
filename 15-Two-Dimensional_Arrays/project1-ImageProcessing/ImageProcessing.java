@@ -7,9 +7,9 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 public class ImageProcessing {
 	public static void main(String[] args) {
-    //JH String baseDir = "/home/jasonhardman/Documents/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
+    String baseDir = "/home/jasonhardman/Documents/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
     //JH String baseDir = "/home/jason/Documents/CodingProjects/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
-    String baseDir = ".";
+    //JH String baseDir = ".";
 	  // The provided images are apple.jpg, flower.jpg, and kitten.jpg
 		int[][] imageData = imgToTwoD(baseDir + "/apple.jpg");
 		int[][] blankCanvas = new int[500][500];
@@ -37,6 +37,11 @@ public class ImageProcessing {
 
     int[][] random = paintRandomImage(blankCanvas);
     twoDToImage(random, baseDir + "/random_image.jpg");
+
+		int[] rectRGBA = {86,235,245,255};
+		int rectColor = getColorIntValFromRGBA( rectRGBA );
+    int[][]  pRect = paintRectangle(blankCanvas, 450, 50, 400, 50, rectColor);
+    twoDToImage(pRect, baseDir + "/rect_image.jpg");
 
     // int[][] allFilters = stretchHorizontally(shrinkVertically(colorFilter(negativeColor(trimBorders(invertImage(imageData), 50)), 200, 20, 40)));
 		// Painting with pixels
@@ -135,6 +140,7 @@ public class ImageProcessing {
 	public static int[][] paintRandomImage(int[][] canvas) {
 		// Creates a random image
 		Random rand = new Random();
+		int[][] randomImage = new int[canvas.length][canvas[0].length];
 		for(int i=0; i < canvas.length; i++) {
 			for(int j=0; j < canvas[0].length; j++) {
 				int[] rgba = new int[4];
@@ -142,14 +148,33 @@ public class ImageProcessing {
 				rgba[1] = rand.nextInt(256);
 				rgba[2] = rand.nextInt(256);
 				rgba[3] = 255;
-        canvas[i][j] = getColorIntValFromRGBA(rgba);
+        randomImage[i][j] = getColorIntValFromRGBA(rgba);
 			}
 		}
-		return canvas;
+		return randomImage;
 	}
 	public static int[][] paintRectangle(int[][] canvas, int width, int height, int rowPosition, int colPosition, int color) {
-		// TODO: Fill in the code for this method
-		return null;
+		// Draws a rectangle where defined by input
+		int[][] rectImage = new int[canvas.length][canvas[0].length];
+		// make sure not to go off the canvas
+		if(rowPosition >= canvas.length) {
+			rowPosition = canvas.length - 1;
+		}
+		if(colPosition >= canvas[0].length) {
+			colPosition = canvas[0].length - 1;
+		}
+		if((rowPosition + height) >= canvas.length) {
+			height = canvas.length - rowPosition;
+		}
+		if((colPosition + width) >= canvas[0].length) {
+			width = canvas[0].length - colPosition;
+		}
+		for(int i=rowPosition; i < (rowPosition + height) ; i++) {
+			for(int j=colPosition; j < (colPosition + width) ; j++) {
+				rectImage[i][j] = color;
+			}
+		}
+		return rectImage;
 	}
 	public static int[][] generateRectangles(int[][] canvas, int numRectangles) {
 		// TODO: Fill in the code for this method
