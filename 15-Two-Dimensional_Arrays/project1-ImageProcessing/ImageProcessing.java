@@ -7,11 +7,12 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 public class ImageProcessing {
 	public static void main(String[] args) {
-    String baseDir = "/home/jasonhardman/Documents/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
+    //JH String baseDir = "/home/jasonhardman/Documents/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
     //JH String baseDir = "/home/jason/Documents/CodingProjects/Beginning-Java/15-Two-Dimensional_Arrays/project1-ImageProcessing";
-    //JH String baseDir = ".";
+    String baseDir = ".";
 	  // The provided images are apple.jpg, flower.jpg, and kitten.jpg
 		int[][] imageData = imgToTwoD(baseDir + "/apple.jpg");
+		int[][] blankCanvas = new int[500][500];
     // Or load your own image using a URL!
 		//int[][] imageData = imgToTwoD("https://content.codecademy.com/projects/project_thumbnails/phaser/bug-dodger.png");
 		//viewImageData(imageData);
@@ -33,6 +34,9 @@ public class ImageProcessing {
 
     int[][] filtered = colorFilter(imageData, -75, 30, -30);
     twoDToImage(filtered, baseDir + "/filtered_apple.jpg");
+
+    int[][] random = paintRandomImage(blankCanvas);
+    twoDToImage(random, baseDir + "/random_image.jpg");
 
     // int[][] allFilters = stretchHorizontally(shrinkVertically(colorFilter(negativeColor(trimBorders(invertImage(imageData), 50)), 200, 20, 40)));
 		// Painting with pixels
@@ -129,8 +133,19 @@ public class ImageProcessing {
 	}
 	// Painting Methods
 	public static int[][] paintRandomImage(int[][] canvas) {
-		// TODO: Fill in the code for this method
-		return null;
+		// Creates a random image
+		Random rand = new Random();
+		for(int i=0; i < canvas.length; i++) {
+			for(int j=0; j < canvas[0].length; j++) {
+				int[] rgba = new int[4];
+				rgba[0] = rand.nextInt(256);
+				rgba[1] = rand.nextInt(256);
+				rgba[2] = rand.nextInt(256);
+				rgba[3] = 255;
+        canvas[i][j] = getColorIntValFromRGBA(rgba);
+			}
+		}
+		return canvas;
 	}
 	public static int[][] paintRectangle(int[][] canvas, int width, int height, int rowPosition, int colPosition, int color) {
 		// TODO: Fill in the code for this method
